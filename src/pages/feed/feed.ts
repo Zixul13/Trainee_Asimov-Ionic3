@@ -1,6 +1,8 @@
 import { MovieProvider } from './../../providers/movies/movies';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 /**
@@ -27,6 +29,8 @@ export class FeedPage {
     time_comment: "11h ago"
   }
 
+  public movie_list = new Array<any>();
+
   public Username:string = "Luiz Fernando Kikuchi"
 
   constructor(
@@ -41,10 +45,14 @@ export class FeedPage {
 
   ionViewDidLoad() {
     this.usemovieprovider.GetLatestMovies().subscribe(
+
       data=>{
-        console.log(data);
+        const response= (data as any);
+        this.movie_list = response.results
+        console.log(this.movie_list);
         },
-      error=>{ console.log (error);
+      error=>{
+        console.log (error);
       }
      )
   }
