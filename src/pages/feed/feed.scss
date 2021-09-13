@@ -1,11 +1,17 @@
 page-feed {
-  h2.feed_title {
+  .feed_title {
     color: royalblue;
     font-weight: bold;
+    text-align: center;
+    font-size: large;
+    overflow-wrap: break-word;
+    word-break: break-all;
   }
 
-  p.feed_date{
+  .feed_date{
     color: darkgray;
+    text-align: center;
 
   }
+
 }

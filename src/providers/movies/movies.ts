@@ -28,5 +28,6 @@ export class MovieProvider {
 
     return this.http.get(this.BaseApiPath + `/movie/${movie_id}?api_key=343fd8f7c39ce86ab70131ddc14ab901`)
 
-  }
+ }
+
 }

@@ -40,12 +40,14 @@ export class FeedPage {
   public loader;
   public refresher;
   public isRefreshing: boolean = false;
+  public loadingCtrl: LoadingController
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private usemovieprovider: MovieProvider) {}
-    public loadingCtrl: LoadingController
+    private usemovieprovider: MovieProvider
+    ) {}
+
 
     AbreLoading() {
       this.loader = this.loadingCtrl.create({

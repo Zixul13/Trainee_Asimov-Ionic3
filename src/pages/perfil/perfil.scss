@@ -1,3 +1,38 @@
 page-perfil {
 
+  .profile-pic img{
+    width: 80%;
+    border-radius: 360px;
+    margin-top: 60px;
+}
+
+  .profile-title h2{
+    font-size: large;
+    margin-top: 20px;
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .profile-title h2{
+    font-size: 15px;
+    margin-top: 20px;
+    overflow-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .capa {
+    color:black;
+    text-align: center;
+  }
+
+  .capa span {
+    Color:royalblue;
+    display: block;
+  }
+
+  .capa div {
+    display: inline-block;
+    margin-top: 10px;
+  }
+
 }

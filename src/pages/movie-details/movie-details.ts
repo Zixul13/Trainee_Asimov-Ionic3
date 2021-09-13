@@ -1,4 +1,4 @@
-import { MovieProvider } from './../../providers/movies/movies';
+import { MovieProvider } from '../../providers/movies/movies';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -19,11 +19,11 @@ export class MovieDetailsPage {
 
   public filme
   public movie_id
-  public useMovieProviderid: MovieProvider
 
   constructor(
     public navCtrl: NavController,
-    public navParams: NavParams
+    public navParams: NavParams,
+    public usemovieprovider: MovieProvider
     ) {
   }
 
@@ -33,16 +33,19 @@ export class MovieDetailsPage {
 
     console.log ("ID do Filme: ", this.movie_id)
 
-    this.useMovieProviderid.GetMovieDetail(this.movie_id).subscribe(data=>{
+    if(this.movie_id){
 
-      let retorno = (data as any)._body;
-      this.filme = retorno
+      this.usemovieprovider.GetMovieDetail(this.movie_id).subscribe(
 
-    },error=>{
+        data=>{
+            console.log(data)
+          },
+        error=>{
 
-      console.log(error)
+        }
+       )
+    }
 
-    })
   }
 
 }
