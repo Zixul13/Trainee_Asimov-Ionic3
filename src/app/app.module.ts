@@ -1,3 +1,4 @@
+import { MovieDetailsPageModule } from './../pages/movie-details/movie-details.module';
 import { PerfilPageModule } from './../pages/perfil/perfil.module';
 import { SobrePageModule } from './../pages/sobre/sobre.module';
 import { ConfiguracoesPageModule } from './../pages/configuracoes/configuracoes.module';
@@ -35,6 +36,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ConfiguracoesPageModule,
     SobrePageModule,
     PerfilPageModule,
+    MovieDetailsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

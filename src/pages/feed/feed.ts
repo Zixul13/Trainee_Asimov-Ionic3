@@ -1,8 +1,10 @@
 import { MovieProvider } from './../../providers/movies/movies';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { _appIdRandomProviderFactory } from '@angular/core/src/application_tokens';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { MovieDetailsPage } from '../movie-details/movie-details';
+
 
 
 /**
@@ -29,32 +31,94 @@ export class FeedPage {
     time_comment: "11h ago"
   }
 
-  public movie_list = new Array<any>();
+  public page = 1;
+  public infiniteScroll;
+  public items;
 
+  public movie_list = new Array<any>();
   public Username:string = "Luiz Fernando Kikuchi"
+  public loader;
+  public refresher;
+  public isRefreshing: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private usemovieprovider: MovieProvider) {
+    private usemovieprovider: MovieProvider) {}
+    public loadingCtrl: LoadingController
+
+    AbreLoading() {
+      this.loader = this.loadingCtrl.create({
+        content: "Carregando...",
+      });
+      this.loader.present();
+    }
+
+    FechaLoading(){
+      this.loader.dismiss();
+    }
+
+    doRefresh(refresher) {
+      this.refresher = refresher
+      this.isRefreshing = true;
+
+      if(this.isRefreshing){
+        this.refresher.complete();
+        this.isRefreshing = false;
+
+      this.CarregarFilmes();
+
+      }
+    }
+
+  ionViewDidEnter() {
+
+    this.CarregarFilmes();
+
   }
 
-  public SomaDoisNumeros(num1:number,num2:number):void{
-    //alert(num1 + num2)
+  OpenDetails(filme){
+
+    console.log (filme);
+    this.navCtrl.push(MovieDetailsPage, {id: filme.id})
+
   }
 
-  ionViewDidLoad() {
-    this.usemovieprovider.GetLatestMovies().subscribe(
+  doInfinite(infiniteScroll) {
+
+    this.page++;
+    this.infiniteScroll = infiniteScroll;
+    this.CarregarFilmes(true);
+
+  }
+
+  CarregarFilmes(newpage: boolean = false){
+
+
+    //this.AbreLoading();
+    this.usemovieprovider.GetLatestMovies(this.page).subscribe(
 
       data=>{
         const response= (data as any);
-        this.movie_list = response.results
-        console.log(this.movie_list);
+
+        if(newpage){
+          this.movie_list = this.movie_list.concat(response.results)
+          this.infiniteScroll.complete();
+        }
+        else{
+          this.movie_list = response.results
+        }
+
+        console.log(this.movie_list)
+
+        //this.FechaLoading();
         },
       error=>{
         console.log (error);
+        //this.FechaLoading();
       }
      )
+
   }
 
 }

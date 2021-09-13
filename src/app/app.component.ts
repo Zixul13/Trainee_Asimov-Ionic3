@@ -43,6 +43,7 @@ export class MyApp {
     });
   }
 }
+
 function config(config: any) {
   throw new Error('Function not implemented.');
 }
