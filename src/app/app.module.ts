@@ -1,4 +1,8 @@
+import { PerfilPageModule } from './../pages/perfil/perfil.module';
+import { SobrePageModule } from './../pages/sobre/sobre.module';
+import { ConfiguracoesPageModule } from './../pages/configuracoes/configuracoes.module';
 import { IntroPageModule } from './../pages/intro/intro.module';
+
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +32,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     FeedPageModule,
     IntroPageModule,
     HttpClientModule,
+    ConfiguracoesPageModule,
+    SobrePageModule,
+    PerfilPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
