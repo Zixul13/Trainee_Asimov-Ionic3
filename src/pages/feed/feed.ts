@@ -22,14 +22,6 @@ import { MovieDetailsPage } from '../movie-details/movie-details';
 })
 export class FeedPage {
 
-  public objetofeed={
-    titulo:"Luiz F. Kikuchi",
-    data: "July 15, 2000",
-    descricao: "Este é o app do Japa XD. Japa está desenvolvendo este app e chorando com a faculdade",
-    likes: 12,
-    comments: 4,
-    time_comment: "11h ago"
-  }
 
   public page = 1;
   public infiniteScroll;

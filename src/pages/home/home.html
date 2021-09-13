@@ -5,13 +5,47 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+
+  <ion-card>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <div class="profile-pic">
+          <img src="../../assets/imgs/eu.jpg" alt="Foto de Luiz Fernando Kikuchi" style="border: 2px solid gray;">
+        </div>
+      </ion-avatar>
+      <h2>{{objetofeed.titulo}}</h2>
+      <p>{{objetofeed.data}}</p>
+    </ion-item>
+
+    <hr>
+
+    <img src="../../assets/imgs/opoco.jpg">
+
+    <ion-card-content>
+      <p>{{objetofeed.descricao}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="thumbs-up"></ion-icon>
+          <div>{{objetofeed.likes}}</div>
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-start clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{objetofeed.comments}}</div>
+        </button>
+      </ion-col>
+      <ion-col align-self-center text-center>
+        <ion-note>
+          {{objetofeed.data}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
 </ion-content>
